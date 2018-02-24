@@ -2,10 +2,7 @@ package com.example.andrewtran.dectetdemo;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 /**
  * Created by andrewtran on 2/22/18.
@@ -29,5 +26,10 @@ public class FondationalTests {
 //            drawnCards.add(newCard);
 //        }
 //        drawnCards.add(deck.drawCard());
+    }
+
+    @Test
+    public void deck_ReturnsCurrentSize() {
+        // TODO
     }
 }
