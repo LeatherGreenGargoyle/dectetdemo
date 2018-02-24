@@ -15,4 +15,6 @@ package com.example.andrewtran.dectetdemo.Models;
  */
 
 public class Deck {
+    String[] suits = {"pink", "brown"};
+    Card card = new Card("The Lunatic", suits);
 }
