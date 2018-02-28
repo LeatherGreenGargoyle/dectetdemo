@@ -11,28 +11,33 @@ import java.lang.annotation.RetentionPolicy;
  *
  * Represents a single card in the game.
  *
- * Misc:
- * - TODO set up Dagger 2 so we can have a Resource interactor here that can grab string resources for the stringDef
  */
 
 public class Card {
 
     private String mName;
     private String[] mSuits;
+    private int mRank;
 //    private int mImageId;
 
-    public Card(@NonNull String name, @NonNull String[] suits) {
+    public Card(@NonNull String name, @NonNull String[] suits, @NonNull int rank) {
         mName = name;
         mSuits = suits;
+        mRank = rank;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public int getRank() {
+        return mRank;
     }
 
     public String[] getSuits() {
         return mSuits;
     }
 
-    public String getName() {
-        return mName;
-    }
 
     /* ========= V SUITS V=============*/
     @Retention(RetentionPolicy.SOURCE)

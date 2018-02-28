@@ -1,6 +1,7 @@
 package com.example.andrewtran.dectetdemo;
 
 import com.example.andrewtran.dectetdemo.Models.Card;
+import com.example.andrewtran.dectetdemo.Models.Deck;
 
 import org.junit.Test;
 
@@ -35,14 +36,15 @@ public class FoundationalTests {
     }
 
     @Test
-    public void deck_ReturnsCurrentSize() {
-        // TODO
+    public void deck_has36Cards() {
+        Deck aDeck = new Deck();
+        assertEquals(aDeck.getDeckSize(), 36);
     }
 
     @Test
     public void card_hasSuits() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits);
+        Card card = new Card("The Lunatic", suits, 6);
 
         assertNotNull("Expected card suits to be non-null", card.getSuits());
     }
@@ -50,8 +52,16 @@ public class FoundationalTests {
     @Test
     public void card_hasName() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits);
+        Card card = new Card("The Lunatic", suits, 6);
 
         assertNotNull("Expected card name to be non-null", card.getName());
+    }
+
+    @Test
+    public void card_hasRank() {
+        String[] suits = {MOONS, WAVES};
+        Card card = new Card("The Lunatic", suits, 6);
+
+        assertNotNull("Expected card rank to be non-null", card.getRank());
     }
 }
