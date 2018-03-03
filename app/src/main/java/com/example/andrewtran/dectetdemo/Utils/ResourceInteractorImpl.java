@@ -19,7 +19,20 @@ public class ResourceInteractorImpl implements ResourceInteractor {
 
     @NonNull
     @Override
+    public int[] getIntArray(int resId) {
+        return mResources.getIntArray(resId);
+    }
+
+    @NonNull
+    @Override
     public String getString(int resId, Object... formatArgs) {
         return mResources.getString(resId, formatArgs);
     }
+
+    @NonNull
+    @Override
+    public String[] getStringArray(int resId) {
+        return mResources.getStringArray(resId);
+    }
+
 }

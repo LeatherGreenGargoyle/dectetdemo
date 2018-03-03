@@ -1,7 +1,10 @@
 package com.example.andrewtran.dectetdemo;
 
+import android.support.annotation.NonNull;
+
 import com.example.andrewtran.dectetdemo.Models.Card;
 import com.example.andrewtran.dectetdemo.Models.Deck;
+import com.example.andrewtran.dectetdemo.Utils.ResourceInteractor;
 
 import org.junit.Test;
 
@@ -15,9 +18,17 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class FoundationalTests {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+
+    private ResourceInteractor mResources;
+    String [] mCardSuits;
+    int [] mCardRanks;
+    String [] mCardNames;
+
+    FoundationalTests(@NonNull ResourceInteractor resources) {
+        mResources = resources;
+        mCardSuits = mResources.getStringArray(R.array.card_suits);
+        mCardRanks = mResources.getIntArray(R.array.card_ranks);
+        mCardNames = mResources.getStringArray(R.array.card_names);
     }
 
     @Test
@@ -37,7 +48,7 @@ public class FoundationalTests {
 
     @Test
     public void deck_has36Cards() {
-        Deck aDeck = new Deck();
+        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
         assertEquals(aDeck.getDeckSize(), 36);
     }
 

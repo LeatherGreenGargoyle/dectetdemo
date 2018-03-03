@@ -3,7 +3,8 @@ package com.example.andrewtran.dectetdemo;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.example.andrewtran.dectetdemo.MainApp;
+import com.example.andrewtran.dectetdemo.Utils.ResourceInteractor;
+import com.example.andrewtran.dectetdemo.Utils.ResourceInteractorImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -25,5 +26,10 @@ class AppModule {
     @Provides
     Context provideAppContext() {
         return mContext;
+    }
+
+    @Provides
+    ResourceInteractor provideResources() {
+        return new ResourceInteractorImpl(mContext);
     }
 }
