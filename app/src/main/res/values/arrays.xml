@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="card_names">
+        <item>Ace of Suns</item>
+        <item>Ace of Waves</item>
+        <item>Ace of Wyrms</item>
+        <item>Ace of Knots</item>
+        <item>Ace of Moons</item>
+        <item>Ace of Leaves</item>
+        <item>The Origin</item>
+        <item>The Desert</item>
+        <item>The Author</item>
+        <item>The Journey</item>
+        <item>The Savage</item>
+        <item>The Painter</item>
+        <item>The Mountain</item>
+        <item>The Sailor</item>
+        <item>The Sailor</item>
+        <item>The Forest</item>
+        <item>The Discovery</item>
+        <item>The Penitent</item>
+        <item>The Market</item>
+        <item>The Lunatic</item>
+        <item>The Cave</item>
+        <item>The Castle</item>
+        <item>The Chance Meeting</item>
+        <item>The Diplomat</item>
+        <item>The Mill</item>
+        <item>The Betrayal</item>
+        <item>The Darkness</item>
+        <item>The Pact</item>
+        <item>The Merchant</item>
+        <item>The Calamity</item>
+        <item>The End</item>
+        <item>The Bard</item>
+        <item>The Huntress</item>
+        <item>The Windfall</item>
+        <item>The Sea</item>
+    </string-array>
+
+    <string-array name="card_suits">
+        <item>suns</item>
+        <item>waves</item>
+        <item>wyrms</item>
+        <item>knots</item>
+        <item>moons</item>
+        <item>leaves</item>
+        <item>waves_leaves</item>
+        <item>suns_wyrms</item>
+        <item>moons_knots</item>
+        <item>moons_waves</item>
+        <item>leaves_wyrms</item>
+        <item>suns_knots</item>
+        <item>moons_suns</item>
+        <item>waves_leaves</item>
+        <item>wyrms_knots</item>
+        <item>moons_leaves</item>
+        <item>suns_waves</item>
+        <item>suns_wyrms</item>
+        <item>leaves_knots</item>
+        <item>moons_waves</item>
+        <item>waves_wyrms</item>
+        <item>suns_knots</item>
+        <item>moons_leaves</item>
+        <item>moons_suns</item>
+        <item>waves_leaves</item>
+        <item>wyrms_knots</item>
+        <item>waves_wyrms</item>
+        <item>moons_suns</item>
+        <item>leaves_knots</item>
+        <item>wyrms</item>
+        <item>leaves</item>
+        <item>suns</item>
+        <item>moons</item>
+        <item>knots</item>
+        <item>waves</item>
+    </string-array>
+
+    <integer-array name="card_ranks">
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>7</item>
+        <item>7</item>
+        <item>7</item>
+        <item>8</item>
+        <item>8</item>
+        <item>8</item>
+        <item>9</item>
+        <item>9</item>
+        <item>9</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+    </integer-array>
+</resources>
