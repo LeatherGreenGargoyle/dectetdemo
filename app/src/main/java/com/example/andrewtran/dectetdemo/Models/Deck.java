@@ -1,7 +1,9 @@
 package com.example.andrewtran.dectetdemo.Models;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 
 /**
  * Created by andrewtran on 2/24/18.
@@ -22,22 +24,40 @@ import java.util.Collections;
 
 public class Deck {
 
-    private Card [] mDeck;
+    private ArrayDeque<Card> mDeck;
 
     public Deck(String [] cardSuits, int [] cardRanks, String [] cardNames) {
-        mDeck = new Card[36];
+        mDeck = new ArrayDeque<>();
         String [] shuffledCardNames = Arrays.copyOf(cardNames, cardNames.length);
+        Random random = new Random();
         Collections.shuffle(Arrays.asList(shuffledCardNames));
 
-        for (String cardName : shuffledCardNames) {
-            int idx = Arrays.asList(cardNames).indexOf(cardName);
-            String[] suits = cardSuits[idx].split("_");
-            Card newCard = new Card(cardName, suits, cardRanks[idx]);
-            mDeck[idx] = newCard;
+        for (int i = 0; i < cardNames.length; i++) {
+            int randomIdx = i + random.nextInt(cardNames.length - i);
+            String tempName = cardNames[i];
+            int tempRank = cardRanks[i];
+            String tempSuits = cardSuits[i];
+
+            cardNames[i] = cardNames[randomIdx];
+            cardRanks[i] = cardRanks[randomIdx];
+            cardSuits[i] = cardSuits[randomIdx];
+
+            cardNames[randomIdx] = tempName;
+            cardRanks[randomIdx] = tempRank;
+            cardSuits[randomIdx] = tempSuits;
+        }
+
+        for (int j = 0; j < cardNames.length; j++) {
+            Card newCard = new Card(cardNames[j], cardSuits[j].split("_"), cardRanks[j]);
+            mDeck.add(newCard);
         }
     }
 
+    public Card drawCard() {
+        return mDeck.remove();
+    }
+
     public int getDeckSize() {
-        return mDeck.length;
+        return mDeck.size();
     }
 }

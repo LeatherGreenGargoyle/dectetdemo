@@ -14,13 +14,14 @@ import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by andrewtran on 2/22/18.
+ * Contains basic tests.
  */
 
 public class FoundationalTest {
 
-    String [] mCardSuits;
-    int [] mCardRanks;
-    String [] mCardNames;
+    private String [] mCardSuits;
+    private int [] mCardRanks;
+    private String [] mCardNames;
 
     public FoundationalTest() {
         super();
@@ -43,18 +44,27 @@ public class FoundationalTest {
     }
 
     @Test
-    public void deck_hasOnlyUniqueCards() {
-//        TODO
-//        Deck deck = new Deck();
-//        List<Card> drawnCards = ArrayList();
-//        while (deck.size != 0) {
-//            Card newCard = deck.draw();
-//            if (drawnCards.contains(newCard)) {
-//                fail("Drew a previously drawn card");
-//            }
-//            drawnCards.add(newCard);
-//        }
-//        drawnCards.add(deck.drawCard());
+    public void deck_producesCards() {
+        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
+        Card aDrawnCard = aDeck.drawCard();
+        String[] cardSuits = aDrawnCard.getSuits();
+
+        assertNotNull("Expected card suits to be non-null", cardSuits);
+        assertTrue(cardSuits.length > 0);
+        assertTrue(cardSuits.length < 3);
+
+        String cardName = aDrawnCard.getName();
+
+        assertNotNull("Expected card name to be non-null", cardName);
+        assertNotEquals(cardName.length(), 0);
+
+        int cardRank = aDrawnCard.getRank();
+
+        assertNotNull("Expected card rank to be non-null", aDrawnCard.getRank());
+        assertTrue(cardRank > 0);
+        assertTrue(cardRank < 11);
+
+        // TEAR-DOWN
     }
 
     @Test
