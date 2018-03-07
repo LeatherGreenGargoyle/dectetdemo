@@ -5,10 +5,14 @@ import com.example.andrewtran.dectetdemo.Models.Deck;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.example.andrewtran.dectetdemo.Models.Card.MOONS;
 import static com.example.andrewtran.dectetdemo.Models.Card.WAVES;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.fail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -44,6 +48,24 @@ public class FoundationalTest {
     }
 
     @Test
+    public void deck_containsUniqueCards() {
+        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
+        List<Card> drawnCards = new ArrayList<>();
+        while (aDeck.getDeckSize() > 0) {
+            Card aDrawnCard = aDeck.drawCard();
+            if (drawnCards.contains(aDrawnCard)) {
+                fail("Deck drew a card that was previously drawn");
+            }
+        }
+    }
+
+    @Test
+    public void deck_has36Cards() {
+        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
+        assertEquals(aDeck.getDeckSize(), 36);
+    }
+
+    @Test
     public void deck_producesCards() {
         Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
         Card aDrawnCard = aDeck.drawCard();
@@ -63,14 +85,15 @@ public class FoundationalTest {
         assertNotNull("Expected card rank to be non-null", aDrawnCard.getRank());
         assertTrue(cardRank > 0);
         assertTrue(cardRank < 11);
-
-        // TEAR-DOWN
     }
 
     @Test
-    public void deck_has36Cards() {
+    public void deck_drawCard_removesCardsFromDeck() {
         Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
-        assertEquals(aDeck.getDeckSize(), 36);
+        int oldDeckSize = aDeck.getDeckSize();
+        aDeck.drawCard();
+        int newDeckSize = aDeck.getDeckSize();
+        assertTrue(newDeckSize == oldDeckSize - 1);
     }
 
     @Test
