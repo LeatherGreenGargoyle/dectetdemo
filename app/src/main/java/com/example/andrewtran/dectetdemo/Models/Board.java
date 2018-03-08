@@ -20,4 +20,6 @@ public interface Board {
     int POINTRIGHT = 1;
     int UPSIDEDOWN = 2;
     int POINTLEFT = 3;
+
+    void initializeGrid(int size);
 }
