@@ -1,5 +1,7 @@
 package com.example.andrewtran.dectetdemo.Models;
 
+import com.example.andrewtran.dectetdemo.Models.Board.Orientation;
+
 import java.util.List;
 
 /**
@@ -11,6 +13,13 @@ public class Space {
 
      boolean mIsEmpty;
      List<Card> mStack;
+     @Orientation int mOrientation;
 
+     public Space(int orientation) {
+          mOrientation = orientation;
+     }
 
+     public void placeCard(Card card) {
+
+     }
 }
