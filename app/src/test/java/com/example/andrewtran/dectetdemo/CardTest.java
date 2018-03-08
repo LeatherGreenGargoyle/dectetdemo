@@ -1,11 +1,11 @@
 package com.example.andrewtran.dectetdemo;
 
-import com.example.andrewtran.dectetdemo.Models.Card;
+import com.example.andrewtran.dectetdemo.Models.CardImpl;
 
 import org.junit.Test;
 
-import static com.example.andrewtran.dectetdemo.Models.Card.MOONS;
-import static com.example.andrewtran.dectetdemo.Models.Card.WAVES;
+import static com.example.andrewtran.dectetdemo.Models.CardImpl.MOONS;
+import static com.example.andrewtran.dectetdemo.Models.CardImpl.WAVES;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertNotEquals;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotEquals;
 /**
  * Created by andrewtran on 3/7/18.
  *
- * Tests for class Card
+ * Tests for class CardImpl
  */
 
 public class CardTest {
@@ -21,7 +21,7 @@ public class CardTest {
     @Test
     public void getName_returnsNonEmptyString() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits, 6);
+        CardImpl card = new CardImpl("The Lunatic", suits, 6);
         String cardName = card.getName();
 
         assertNotNull("Expected card name to be non-null", cardName);
@@ -31,7 +31,7 @@ public class CardTest {
     @Test
     public void getRank_returnsANumber() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits, 6);
+        CardImpl card = new CardImpl("The Lunatic", suits, 6);
         int cardRank = card.getRank();
 
         assertNotNull("Expected card rank to be non-null", card.getRank());
@@ -42,7 +42,7 @@ public class CardTest {
     @Test
     public void getSuits_returnsANumber() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits, 6);
+        CardImpl card = new CardImpl("The Lunatic", suits, 6);
         String[] cardSuits = card.getSuits();
 
         assertNotNull("Expected card suits to be non-null", cardSuits);

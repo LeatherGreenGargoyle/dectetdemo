@@ -1,15 +1,15 @@
 package com.example.andrewtran.dectetdemo;
 
-import com.example.andrewtran.dectetdemo.Models.Card;
-import com.example.andrewtran.dectetdemo.Models.Deck;
+import com.example.andrewtran.dectetdemo.Models.CardImpl;
+import com.example.andrewtran.dectetdemo.Models.DeckImpl;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.andrewtran.dectetdemo.Models.Card.MOONS;
-import static com.example.andrewtran.dectetdemo.Models.Card.WAVES;
+import static com.example.andrewtran.dectetdemo.Models.CardImpl.MOONS;
+import static com.example.andrewtran.dectetdemo.Models.CardImpl.WAVES;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
@@ -49,26 +49,26 @@ public class FoundationalTest {
 
     @Test
     public void deck_containsUniqueCards() {
-        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
-        List<Card> drawnCards = new ArrayList<>();
+        DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
+        List<CardImpl> drawnCards = new ArrayList<>();
         while (aDeck.getDeckSize() > 0) {
-            Card aDrawnCard = aDeck.drawCard();
+            CardImpl aDrawnCard = aDeck.drawCard();
             if (drawnCards.contains(aDrawnCard)) {
-                fail("Deck drew a card that was previously drawn");
+                fail("DeckImpl drew a card that was previously drawn");
             }
         }
     }
 
     @Test
     public void deck_has36Cards() {
-        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
+        DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
         assertEquals(aDeck.getDeckSize(), 36);
     }
 
     @Test
     public void deck_producesCards() {
-        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
-        Card aDrawnCard = aDeck.drawCard();
+        DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
+        CardImpl aDrawnCard = aDeck.drawCard();
         String[] cardSuits = aDrawnCard.getSuits();
 
         assertNotNull("Expected card suits to be non-null", cardSuits);
@@ -89,7 +89,7 @@ public class FoundationalTest {
 
     @Test
     public void deck_drawCard_removesCardsFromDeck() {
-        Deck aDeck = new Deck(mCardSuits, mCardRanks, mCardNames);
+        DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
         int oldDeckSize = aDeck.getDeckSize();
         aDeck.drawCard();
         int newDeckSize = aDeck.getDeckSize();
@@ -99,7 +99,7 @@ public class FoundationalTest {
     @Test
     public void card_hasSuits() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits, 6);
+        CardImpl card = new CardImpl("The Lunatic", suits, 6);
         String[] cardSuits = card.getSuits();
 
         assertNotNull("Expected card suits to be non-null", cardSuits);
@@ -110,7 +110,7 @@ public class FoundationalTest {
     @Test
     public void card_hasName() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits, 6);
+        CardImpl card = new CardImpl("The Lunatic", suits, 6);
         String cardName = card.getName();
 
         assertNotNull("Expected card name to be non-null", cardName);
@@ -120,7 +120,7 @@ public class FoundationalTest {
     @Test
     public void card_hasRank() {
         String[] suits = {MOONS, WAVES};
-        Card card = new Card("The Lunatic", suits, 6);
+        CardImpl card = new CardImpl("The Lunatic", suits, 6);
         int cardRank = card.getRank();
 
         assertNotNull("Expected card rank to be non-null", card.getRank());

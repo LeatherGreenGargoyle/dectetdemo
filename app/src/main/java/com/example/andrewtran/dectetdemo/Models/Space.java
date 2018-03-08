@@ -1,25 +1,11 @@
 package com.example.andrewtran.dectetdemo.Models;
 
-import com.example.andrewtran.dectetdemo.Models.Board.Orientation;
-
-import java.util.List;
-
 /**
- * Created by andrewtran on 3/6/18.
- * A Space on a Board
+ * Created by andrewtran on 3/7/18.
  */
 
-public class Space {
+public interface Space {
 
-     boolean mIsEmpty;
-     List<Card> mStack;
-     @Orientation int mOrientation;
-
-     public Space(int orientation) {
-          mOrientation = orientation;
-     }
-
-     public void placeCard(Card card) {
-
-     }
+    CardImpl takeCard();
+    void placeCard(CardImpl card);
 }
