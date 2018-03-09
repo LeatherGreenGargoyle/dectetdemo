@@ -1,4 +1,4 @@
-package com.example.andrewtran.dectetdemo.Models.DecktetGames;
+package com.example.andrewtran.dectetdemo.Models.DecktetGames.Adaman;
 
 import com.example.andrewtran.dectetdemo.Models.Board;
 
@@ -14,6 +14,5 @@ public class AdamanBoard implements Board {
 
     @Override
     public void initializeGrid(int size) {
-        
     }
 }
