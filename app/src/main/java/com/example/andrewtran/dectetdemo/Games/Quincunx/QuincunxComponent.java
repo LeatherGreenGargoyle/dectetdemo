@@ -14,5 +14,5 @@ import dagger.Component;
 @Component(dependencies = AppComponent.class, modules = {QuincunxModule.class})
 interface QuincunxComponent {
 
-    void inject();
+    void inject(QuincunxActivity activity);
 }
