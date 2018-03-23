@@ -2,11 +2,16 @@ package com.example.andrewtran.dectetdemo.Games.Quincunx;
 
 import android.support.annotation.NonNull;
 
+import com.example.andrewtran.dectetdemo.Models.Card;
+import com.example.andrewtran.dectetdemo.Models.DeckImpl;
+import com.example.andrewtran.dectetdemo.R;
 import com.example.andrewtran.dectetdemo.Utils.ResourceInteractor;
+
+import java.util.List;
 
 /**
  * Created by andrewtran on 3/20/18.
- *
+ * <p>
  * Implementation of QuincunxPresenter.
  */
 
@@ -15,13 +20,29 @@ public class QuincunxPresenterImpl extends QuincunxPresenter {
     @NonNull
     private final ResourceInteractor mResources;
 
+    private List<Card> mHand;
+    private DeckImpl mDeck;
+    private Card mSelected;
+
     QuincunxPresenterImpl(@NonNull ResourceInteractor resources) {
         mResources = resources;
     }
 
     @Override
-    void onDrawClick() {
+    public void onAttachView(@NonNull QuincunxPresenterView presenterView) {
+        super.onAttachView(presenterView);
 
+        mDeck = new DeckImpl(mResources.getStringArray(R.array.card_suits),
+                mResources.getIntArray(R.array.card_ranks),
+                mResources.getStringArray(R.array.card_names));
+
+        mHand = mDeck.drawCards(12);
+        presenterView.set(mHand);
+    }
+
+    @Override
+    void onDrawClick() {
+        Card newCard = mDeck.drawCard();
     }
 
     @Override

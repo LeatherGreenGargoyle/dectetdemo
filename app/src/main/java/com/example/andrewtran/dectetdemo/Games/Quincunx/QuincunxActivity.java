@@ -1,6 +1,11 @@
 package com.example.andrewtran.dectetdemo.Games.Quincunx;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import com.example.andrewtran.dectetdemo.Models.Card;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -10,10 +15,16 @@ import javax.inject.Inject;
  * Implementation of QuincunxPresenterView.
  */
 
-public class QuincunxActivity implements QuincunxPresenterView {
+public class QuincunxActivity extends AppCompatActivity implements QuincunxPresenterView {
 
     @Inject
     QuincunxPresenter mPresenter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter.onAttachView(this);
+    }
 
     @Override
     public void addToHand(Card card) {
@@ -31,7 +42,7 @@ public class QuincunxActivity implements QuincunxPresenterView {
     }
 
     @Override
-    public void setHand() {
+    public void set(List<Card> hand) {
 
     }
 
@@ -47,6 +58,16 @@ public class QuincunxActivity implements QuincunxPresenterView {
 
     @Override
     public void show(int score) {
+
+    }
+
+    @Override
+    public void initialize() {
+
+    }
+
+    @Override
+    public void exit() {
 
     }
 }
