@@ -1,5 +1,6 @@
 package com.example.andrewtran.dectetdemo;
 
+import com.example.andrewtran.dectetdemo.Models.Card;
 import com.example.andrewtran.dectetdemo.Models.CardImpl;
 import com.example.andrewtran.dectetdemo.Models.DeckImpl;
 
@@ -29,19 +30,19 @@ public class FoundationalTest {
 
     public FoundationalTest() {
         super();
-        mCardSuits = new String[]{"suns", "waves", "wyrms", "knots", "moons", "leaves",
+        mCardSuits = new String[] {"suns", "waves", "wyrms", "knots", "moons", "leaves",
                 "waves_leaves", "suns_wyrms", "moons_knots", "moons_waves", "leaves_wyrms",
-                "suns_knots", "moons_suns", "waves_leaves", "wyrms_knots", "moons_leaves",
-                "suns_waves", "suns_wyrms", "leaves_knots", "moons_waves", "waves_wyrms",
-                "suns_knots", "moons_leaves", "moons_suns", "waves_leaves", "wyrms_knots",
-                "waves_wyrms", "moons_suns", "leaves_knots", "wyrms", "leaves", "suns", "moons",
-                "knots", "waves"};
+                "suns_knots", "moons_suns", "waves_leaves", "wyrms_knots", "wyrms_knots",
+                "moons_leaves", "suns_waves", "suns_wyrms", "leaves_knots", "moons_waves",
+                "waves_wyrms", "suns_knots", "moons_leaves", "moons_suns", "waves_leaves",
+                "wyrms_knots", "waves_wyrms", "moons_suns", "leaves_knots", "wyrms", "leaves",
+                "suns", "moons", "knots", "waves"};
         mCardRanks = new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7,
                 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10, 10, 10};
         mCardNames = new String[]{"Ace of Suns", "Ace of Waves", "Ace of Wyrms", "Ace of Knots",
                 "Ace of Moons", "Ace of Leaves", "The Origin", "The Desert", "The Author",
-                "The Journey", "The Savage", "The Painter", "The Mountain", "The Sailor",
-                "The Sailor", "The Forest", "The Discovery", "The Penitent", "The Market",
+                "The Journey", "The Savage", "The Painter", "The Mountain", "The Sailor", "The Battle",
+                "The Soldier", "The Forest", "The Discovery", "The Penitent", "The Market",
                 "The Lunatic", "The Cave", "The Castle", "The Chance Meeting", "The Diplomat",
                 "The Mill", "The Betrayal", "The Darkness", "The Pact", "The Merchant",
                 "The Calamity", "The End", "The Bard", "The Huntress", "The Windfall", "The Sea"};
@@ -52,7 +53,7 @@ public class FoundationalTest {
         DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
         List<CardImpl> drawnCards = new ArrayList<>();
         while (aDeck.getDeckSize() > 0) {
-            CardImpl aDrawnCard = aDeck.drawCard();
+            Card aDrawnCard = aDeck.drawCard();
             if (drawnCards.contains(aDrawnCard)) {
                 fail("DeckImpl drew a card that was previously drawn");
             }
@@ -68,7 +69,7 @@ public class FoundationalTest {
     @Test
     public void deck_producesCards() {
         DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
-        CardImpl aDrawnCard = aDeck.drawCard();
+        Card aDrawnCard = aDeck.drawCard();
         String[] cardSuits = aDrawnCard.getSuits();
 
         assertNotNull("Expected card suits to be non-null", cardSuits);

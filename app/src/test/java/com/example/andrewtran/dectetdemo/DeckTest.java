@@ -1,8 +1,11 @@
 package com.example.andrewtran.dectetdemo;
 
+import com.example.andrewtran.dectetdemo.Models.Card;
 import com.example.andrewtran.dectetdemo.Models.CardImpl;
+import com.example.andrewtran.dectetdemo.Models.Deck;
 import com.example.andrewtran.dectetdemo.Models.DeckImpl;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -27,13 +30,13 @@ public class DeckTest {
 
     public DeckTest() {
         super();
-        mCardSuits = new String[]{"suns", "waves", "wyrms", "knots", "moons", "leaves",
+        mCardSuits = new String[] {"suns", "waves", "wyrms", "knots", "moons", "leaves",
                 "waves_leaves", "suns_wyrms", "moons_knots", "moons_waves", "leaves_wyrms",
-                "suns_knots", "moons_suns", "waves_leaves", "wyrms_knots", "moons_leaves",
-                "suns_waves", "suns_wyrms", "leaves_knots", "moons_waves", "waves_wyrms",
-                "suns_knots", "moons_leaves", "moons_suns", "waves_leaves", "wyrms_knots",
-                "waves_wyrms", "moons_suns", "leaves_knots", "wyrms", "leaves", "suns", "moons",
-                "knots", "waves"};
+                "suns_knots", "moons_suns", "waves_leaves", "wyrms_knots", "wyrms_knots",
+                "moons_leaves", "suns_waves", "suns_wyrms", "leaves_knots", "moons_waves",
+                "waves_wyrms", "suns_knots", "moons_leaves", "moons_suns", "waves_leaves",
+                "wyrms_knots", "waves_wyrms", "moons_suns", "leaves_knots", "wyrms", "leaves",
+                "suns", "moons", "knots", "waves"};
         mCardRanks = new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7,
                 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10, 10, 10};
         mCardNames = new String[]{"Ace of Suns", "Ace of Waves", "Ace of Wyrms", "Ace of Knots",
@@ -47,14 +50,21 @@ public class DeckTest {
 
     @Test
     public void drawCard_drawsUniqueCards() {
-        DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
+        Deck aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
         List<CardImpl> drawnCards = new ArrayList<>();
         while (aDeck.getDeckSize() > 0) {
-            CardImpl aDrawnCard = aDeck.drawCard();
+            Card aDrawnCard = aDeck.drawCard();
             if (drawnCards.contains(aDrawnCard)) {
                 fail("DeckImpl drew a card that was previously drawn");
             }
         }
+    }
+
+    @Test
+    public void drawCard_ReturnsNullFromEmptyDeck() {
+        Deck aDeck = new DeckImpl(new String[]{}, new int[]{}, new String[]{});
+        Card aCard = aDeck.drawCard();
+        Assert.assertNull("Expected to draw null from empty deck", aCard);
     }
 
     @Test
@@ -66,7 +76,7 @@ public class DeckTest {
     @Test
     public void drawCard_returnsCards() {
         DeckImpl aDeck = new DeckImpl(mCardSuits, mCardRanks, mCardNames);
-        CardImpl aDrawnCard = aDeck.drawCard();
+        Card aDrawnCard = aDeck.drawCard();
         String[] cardSuits = aDrawnCard.getSuits();
 
         assertNotNull("Expected card suits to be non-null", cardSuits);

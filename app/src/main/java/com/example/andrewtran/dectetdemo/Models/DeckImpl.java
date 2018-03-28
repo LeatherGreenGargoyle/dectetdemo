@@ -1,9 +1,13 @@
 package com.example.andrewtran.dectetdemo.Models;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by andrewtran on 2/24/18.
@@ -44,8 +48,27 @@ public class DeckImpl implements Deck {
         }
     }
 
-    public CardImpl drawCard() {
-        return mDeck.remove();
+    @Nullable
+    public Card drawCard() {
+        if (mDeck.size() > 0) {
+            return mDeck.remove();
+        } else {
+            return null;
+        }
+    }
+
+    @Nullable
+    public List<Card> drawCards(int times) {
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < times; i++) {
+            Card newCard = drawCard();
+            if (newCard == null) {
+                break;
+            }
+            cards.add(newCard);
+        }
+
+        return cards;
     }
 
     public int getDeckSize() {
