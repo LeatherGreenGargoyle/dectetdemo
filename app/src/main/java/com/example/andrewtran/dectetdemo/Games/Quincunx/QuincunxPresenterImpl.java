@@ -17,6 +17,8 @@ import java.util.List;
 
 public class QuincunxPresenterImpl extends QuincunxPresenter {
 
+    static final int STARTING_HAND_SIZE = 8;
+
     @NonNull
     private final ResourceInteractor mResources;
 
@@ -24,7 +26,7 @@ public class QuincunxPresenterImpl extends QuincunxPresenter {
     private DeckImpl mDeck;
     private Card mSelected;
 
-    QuincunxPresenterImpl(@NonNull ResourceInteractor resources) {
+    public QuincunxPresenterImpl(@NonNull ResourceInteractor resources) {
         mResources = resources;
     }
 
@@ -36,7 +38,7 @@ public class QuincunxPresenterImpl extends QuincunxPresenter {
                 mResources.getIntArray(R.array.card_ranks),
                 mResources.getStringArray(R.array.card_names));
 
-        mHand = mDeck.drawCards(12);
+        mHand = mDeck.drawCards(STARTING_HAND_SIZE);
         presenterView.set(mHand);
     }
 

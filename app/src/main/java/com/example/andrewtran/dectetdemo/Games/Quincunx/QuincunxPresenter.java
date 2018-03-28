@@ -9,7 +9,7 @@ import com.example.andrewtran.dectetdemo.BaseClasses.BasePresenter;
 
 abstract public class QuincunxPresenter extends BasePresenter<QuincunxPresenterView> {
 
-    abstract void onDrawClick();
+    public abstract void onDrawClick();
 
     abstract void onHandCardClick();
 
